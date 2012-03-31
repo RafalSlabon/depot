@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
+
+  #fixtures :products
+
   test "product attributes should not be empty" do
      product = Product.new
      assert product.invalid?
