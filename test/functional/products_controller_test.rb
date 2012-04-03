@@ -15,6 +15,18 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
+
+    assert_select "#product_list", 1
+    assert_select "#product_list table tr.list_line_odd", 2
+    assert_select "#product_list table tr.list_line_even", 1
+
+    assert_select "#product_list table tr.list_line_even" do
+      assert_select "td", 5
+      assert_select "td img.list_image", 1
+      assert_select "td.list_description", 1
+      assert_select "td.list_actions", 1
+    end
+
   end
 
   test "should get new" do
